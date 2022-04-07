@@ -18,21 +18,22 @@ public class SignUpPage {
     private By confirmPass = By.id("Input_ConfirmPassword");
     private By CheckBox = By.id("Input_IsSubscribedToNewsletters");
     private By buttonReg = By.id("recaptcha");
-    private By successWindow = By.xpath("//h2[contains(text(),'Проверьте свою электронную почту, чтобы активирова')]");
-
+    private By successWindow = By.xpath("//p[contains(text(),'Мы отправили Вам письмо со ссылкой активации.')]");
+    private By errorEmail = By.xpath("//li[contains(text(),'Пожалуйста, заполните электронный адрес.')]");
+    private By errorDiffPass = By.xpath("//span[@id='Input_ConfirmPassword-error']");
 
     private SignUpPage typeEmail(String mail) {
-        driver.findElement(email).sendKeys("lala@mail.com");
+        driver.findElement(email).sendKeys(mail);
         return this;
     }
 
     private SignUpPage typePass(String password) {
-        driver.findElement(pass).sendKeys("lala12345");
+        driver.findElement(pass).sendKeys(password);
         return this;
     }
 
     private SignUpPage typeConfirmPass(String password) {
-        driver.findElement(email).sendKeys("lala12345");
+        driver.findElement(confirmPass).sendKeys(password);
         return this;
     }
 
@@ -41,16 +42,31 @@ public class SignUpPage {
         return this;
     }
 
+    public SignUpPage SignUpWithoutCreds(String username, String password, String password2) {
+        this.typeEmail(username);
+        this.typePass(password);
+        this.typeConfirmPass(password2);
+        driver.findElement(buttonReg).click();
+        //driver.findElement(CheckBox).click();
+        return new SignUpPage(driver);
+    }
+
     private SignUpPage clickButtonReg() {
         driver.findElement(buttonReg).click();
         return this;
     }
 
-    private String getSuccessWindow() {
-        return  driver.findElement(successWindow).getText();
+    public String getSuccessWindow() {
+        return driver.findElement(successWindow).getText();
     }
 
+    public String getErrorEmail() {
+        return driver.findElement(errorEmail).getText();
+    }
 
+    public String getErrorDiffPass() {
+        return driver.findElement(errorDiffPass).getText();
+    }
 
 }
 

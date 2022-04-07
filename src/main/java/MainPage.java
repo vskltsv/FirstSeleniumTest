@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,9 +18,9 @@ public class MainPage {
     @FindBy(xpath = "//span[text() = 'Войти']")
     private WebElement SignIn;
 
-    public SignInPage ClickLogin(){
-        login.click();
-        return null;
+    public MainPage ClickLogin(){
+        driver.findElement(By.className("login")).click();
+        return this;
     }
 
     public SignUpPage ClickSignUp(){
