@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +9,7 @@ public class MainPage {
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
+
     @FindBy(className = "login")
     private WebElement login;
     @FindBy(xpath = "//span[contains(text(),'Зарегистрироваться')]")
@@ -17,8 +17,9 @@ public class MainPage {
     @FindBy(xpath = "//span[text() = 'Войти']")
     private WebElement SignIn;
 
-    public void ClickLogin(){
+    public SignInPage ClickLogin(){
         login.click();
+        return null;
     }
 
     public SignUpPage ClickSignUp(){
