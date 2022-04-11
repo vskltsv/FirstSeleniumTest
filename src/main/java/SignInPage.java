@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class SignInPage {
 
-      WebDriver driver;
+      WebDriver driver ;
 
     public SignInPage(WebDriver driver) {
         this.driver = driver;
@@ -16,44 +16,51 @@ public class SignInPage {
     private  WebElement pass;
     @FindBy(xpath = "//input[@id='RememberMe']")
     private  WebElement CheckBox;
-    @FindBy(xpath = "//button[contains(text(),'Войти')]")
-    private  WebElement buttonSignIn;
-    @FindBy(xpath = "//li[contains(text(),'Пожалуйста, заполните электронный адрес.')]")
+//    @FindBy(xpath = "//button[contains(text(),'Войти')]")
+//    private  WebElement buttonSignIn;
+    @FindBy(xpath = "//li[contains(text(),'Please fill in the e-mail address.')]")
     private  WebElement error;
-     @FindBy(xpath = "//li[contains(text(),'Пожалуйста, заполните поле Пароль.')]")
-     private  WebElement error2;
+    @FindBy(xpath = "//span[@id='Password-error']")
+    private  WebElement error2;
 
+    public void openSignInPage(){
+        driver.get("https://account.reverso.net/Account/Login?returnUrl=https%3A%2F%2Fcontext.reverso.net%2F&lang=ru");
+    }
 
-    private SignInPage typeEmail(String username) {
-        driver.findElement(By.xpath("//*[@Id='Email']")).sendKeys(username);
+    public SignInPage typeEmail(String username) {
+        //driver.findElement(By.xpath("//*[@Id='Email']")).sendKeys(username);
+        email.sendKeys(username);
         return this;
     }
 
-    private SignInPage typePass(String password) {
-        driver.findElement(By.xpath("//input[@id='Password']")).sendKeys(password);
+    public SignInPage typePass(String password) {
+        // driver.findElement(By.xpath("//input[@id='Password']")).sendKeys(password);
+         pass.sendKeys(password);
         return this;
     }
 
-    public SignInPage SignInWithoutCreds(String username,String password){
+    public SignInPage signInWithoutCreds(String username, String password){
         this.typeEmail(username);
         this.typePass(password);
-        driver.findElement(By.xpath("//button[contains(text(),'Войти')]")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
+          //buttonSignIn.click();
         return new SignInPage(driver);
+
     }
 
     public String getErrorEmailText(){
-        return  driver.findElement(By.xpath("//li[contains(text(),'Пожалуйста, заполните электронный адрес.')]")).getText();
+        return  error.getText();
     }
 
     public String getErrorPassText(){
-        return  driver.findElement(By.xpath("//span[@id='Password-error']")).getText();
+        return  error2.getText();
 
     }
 
 
-    private SignInPage clickButtonReg() {
-        driver.findElement(By.xpath("//button[contains(text(),'Войти')]")).click();
-        return this;
-    }
+//    private SignInPage clickButtonReg() {
+//        buttonSignIn.click();
+//        return this;
+//    }
 
 }
