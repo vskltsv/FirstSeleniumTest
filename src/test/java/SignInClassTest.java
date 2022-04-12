@@ -13,7 +13,7 @@ public class SignInClassTest extends ChromeBaseClass {
     @Test
     public void setSignIn() throws IOException {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.ClickSignIn();
+        mainPage.clickSignIn();
         SignInPage signInPage = PageFactory.initElements(driver, SignInPage.class);
         signInPage.signInWithoutCreds("", "Masha2002");
         String error = signInPage.getErrorEmailText();
@@ -27,7 +27,7 @@ public class SignInClassTest extends ChromeBaseClass {
     @Test
     public void loginWithoutPassTest() throws InterruptedException, IOException {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.ClickSignIn();
+        mainPage.clickSignIn();
 
         SignInPage signInPage = PageFactory.initElements(driver, SignInPage.class);
         signInPage.signInWithoutCreds("Masha2002@mail.ru", "");

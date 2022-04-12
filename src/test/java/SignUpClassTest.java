@@ -13,7 +13,7 @@ public class SignUpClassTest extends ChromeBaseClass {
     @Test
     public void SignUpWithoutEmailTest() throws IOException, InterruptedException {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.ClickSignUp();
+        mainPage.clickSignUp();
         SignUpPage signUpPage = PageFactory.initElements(driver, SignUpPage.class);
 
         signUpPage.signUpWithoutCreds("", "123456789", "123456789");
@@ -29,7 +29,7 @@ public class SignUpClassTest extends ChromeBaseClass {
     @Test
     public void SignUpWithoutPassTest() throws IOException {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.ClickSignUp();
+        mainPage.clickSignUp();
         SignUpPage signUpPage = PageFactory.initElements(driver, SignUpPage.class);
 
         signUpPage.signUpWithoutCreds("Masha2003@mail.ru", "987456123", "123456789");
@@ -44,7 +44,7 @@ public class SignUpClassTest extends ChromeBaseClass {
     @Test
     public void SignUpSuccessWindow() throws IOException {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.ClickSignUp();
+        mainPage.clickSignUp();
         SignUpPage signUpPage = PageFactory.initElements(driver, SignUpPage.class);
         int random = (int)(Math.random() * 50 + 1);
         SignUpPage newSingUpPage = signUpPage.signUpWithCreds("Sasha_"+ random + "@gmail.ru" , "Marisha1234", "Marisha1234");

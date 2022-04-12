@@ -13,7 +13,7 @@ public class MainClassTest extends ChromeBaseClass{
     @Test
     public void setClickLogin() throws IOException {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.ClickLogin();
+        mainPage.clickLogin();
         driver.findElement(By.className("login")).click();
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
