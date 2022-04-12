@@ -16,16 +16,13 @@ public class SignInPage {
     private  WebElement pass;
     @FindBy(xpath = "//input[@id='RememberMe']")
     private  WebElement CheckBox;
-//    @FindBy(xpath = "//button[contains(text(),'Войти')]")
-//    private  WebElement buttonSignIn;
+    @FindBy(xpath = "//button[contains(text(),'Войти')]")
+    private  WebElement buttonSignIn;
     @FindBy(xpath = "//li[contains(text(),'Please fill in the e-mail address.')]")
     private  WebElement error;
     @FindBy(xpath = "//span[@id='Password-error']")
     private  WebElement error2;
 
-    public void openSignInPage(){
-        driver.get("https://account.reverso.net/Account/Login?returnUrl=https%3A%2F%2Fcontext.reverso.net%2F&lang=ru");
-    }
 
     public SignInPage typeEmail(String username) {
         //driver.findElement(By.xpath("//*[@Id='Email']")).sendKeys(username);
@@ -43,7 +40,7 @@ public class SignInPage {
         this.typeEmail(username);
         this.typePass(password);
         driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
-          //buttonSignIn.click();
+         // buttonSignIn.click();
         return new SignInPage(driver);
 
     }
@@ -58,9 +55,9 @@ public class SignInPage {
     }
 
 
-//    private SignInPage clickButtonReg() {
-//        buttonSignIn.click();
-//        return this;
-//    }
+    private SignInPage clickButtonReg() {
+        buttonSignIn.click();
+        return this;
+    }
 
 }

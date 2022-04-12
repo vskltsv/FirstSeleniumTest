@@ -46,9 +46,9 @@ public class SignUpClassTest extends ChromeBaseClass {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.clickSignUp();
         SignUpPage signUpPage = PageFactory.initElements(driver, SignUpPage.class);
-        int random = (int)(Math.random() * 50 + 1);
-        SignUpPage newSingUpPage = signUpPage.signUpWithCreds("Sasha_"+ random + "@gmail.ru" , "Marisha1234", "Marisha1234");
-        String success = newSingUpPage.getSuccessWindow();
+        int random = (int)(Math.random() * 100 + 1);
+        signUpPage.signUpWithCreds("Sasha_"+ random + "@gmail.com" , "Marisha1234", "Marisha1234");
+        String success = signUpPage.getSuccessWindow();
         Assert.assertEquals("Check your inbox to activate your account", success);
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

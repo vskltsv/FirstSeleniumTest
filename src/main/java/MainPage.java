@@ -1,6 +1,4 @@
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class MainPage {
    private static  WebDriver driver;
@@ -10,12 +8,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-//    @FindBy(className = "login")
-//    private WebElement login;
-    @FindBy(xpath = "//span[contains(text(),'Зарегистрироваться')]")
-    private WebElement SignUp;
-    @FindBy(xpath = "//header/div[1]/div[2]/div[1]/div[2]/a[2]")
-    private WebElement SignIn;
+
 
     public MainPage clickLogin() {
        driver.get("https://context.reverso.net/");
