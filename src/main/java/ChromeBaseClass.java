@@ -38,7 +38,7 @@ public abstract class ChromeBaseClass {
 
     @After
     public void tearDown() {
-        driver.quit();
+        driver.close();
     }
 
 
